@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Movie</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <form id="add-movie-form">
+    <label for="imdb-url">IMDB URL:</label><br>
+    <input type="text" id="imdb-url" name="imdb-url"><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <script>
+    $('#add-movie-form').on('submit', function(event) {
+      event.preventDefault();
+
+      const imdbUrl = $('#imdb-url').val();
+
+      $.post('/add-movie', { imdbUrl }, function(data) {
+        alert(data.message);
+      });
+    });
+  </script>
+</body>
+</html>
